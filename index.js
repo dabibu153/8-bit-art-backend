@@ -5,7 +5,9 @@ const cors = require("cors");
 const user = require("./routes/main");
 
 mongoose
-  .connect("mongodb://localhost/8-bit-data")
+  .connect(
+    "mongodb+srv://test-user153:qwerty123@cluster0.jrl5u.mongodb.net/8-bit-db?retryWrites=true&w=majority"
+  )
   .then(() => console.log("connected to server...."))
   .catch((err) => console.log(err.message));
 
