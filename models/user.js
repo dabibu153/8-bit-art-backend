@@ -10,6 +10,9 @@ const userSchema = new mongoose.Schema({
   canvas: {
     type: Array,
   },
+  canvasName: {
+    type: Array,
+  },
 });
 
 const User = new mongoose.model("User", userSchema);

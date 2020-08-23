@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { User, validation } = require("../models/user");
+const { CanvasShare } = require("../models/canvasShare");
 
 router.post("/userName", async (req, res) => {
   const result = validation(req, res);
@@ -981,6 +982,7 @@ router.post("/userName", async (req, res) => {
         ],
       ],
     ],
+    canvasName: "ignoreThis",
   });
   await new_user.save();
   res.send("fresh account added");
@@ -998,8 +1000,27 @@ router.put("/canvasSave", async (req, res) => {
   const user = await User.findOne({ userName: req.body.userName });
 
   user.canvas.push(req.body.sentCanvas);
+  user.canvasName.push(req.body.sentCanvasName);
   user.save();
   res.send("done");
+});
+
+router.post("/canvasShare", async (req, res) => {
+  const new_canvasShare = new CanvasShare({
+    canvas: req.body.sentCanvasShare,
+  });
+  await new_canvasShare.save();
+  res.send(new_canvasShare);
+});
+
+router.post("/canvasGet", async (req, res) => {
+  const canvas = await CanvasShare.findOne({ _id: req.body.canvasId });
+  if (canvas) {
+    res.send(canvas);
+    return;
+  }
+
+  res.send("no canvas found");
 });
 
 module.exports = router;
