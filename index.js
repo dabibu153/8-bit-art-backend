@@ -16,4 +16,7 @@ app.use(cors());
 
 app.use("/api", user);
 
-app.listen((PORT = 5000), console.log("server started at 5000"));
+let port = 5000;
+
+app.listen((PORT = process.env.PORT || 5000));
+console.log("server started...");
