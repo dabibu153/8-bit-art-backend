@@ -4,6 +4,9 @@ const canvasShareSchema = new mongoose.Schema({
   canvas: {
     type: Array,
   },
+  bgcolor: {
+    type: String,
+  },
 });
 
 const CanvasShare = new mongoose.model("CanvasShare", canvasShareSchema);

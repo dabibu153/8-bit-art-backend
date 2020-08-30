@@ -13,6 +13,9 @@ const userSchema = new mongoose.Schema({
   canvasName: {
     type: Array,
   },
+  bgcolor: {
+    type: Array,
+  },
 });
 
 const User = new mongoose.model("User", userSchema);

@@ -18,5 +18,5 @@ app.use("/api", user);
 
 let port = 5000;
 
-app.listen((PORT = process.env.PORT || 5000));
+app.listen((PORT = process.env.PORT || port));
 console.log("server started...");
