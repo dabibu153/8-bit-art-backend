@@ -13,7 +13,9 @@ mongoose
 
 app.use(express.json());
 app.use(cors());
-
+app.all("/", (req, res) => {
+  res.send("hello world!");
+});
 app.use("/api", user);
 
 let port = 5000;
